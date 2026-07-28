@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>PhysicsLab — Kinematics</title>
+<meta name="description" content="Learn Kinematics by interacting instead of memorizing — sliders, live graphs, a step-by-step solver and a quiz." />
+
+<!-- Google Font -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Chart.js (bundled locally in assets/ so the page works fully offline) -->
+<script src="assets/chart.umd.js"></script>
+<!-- Chart.js annotation plugin — draws the labeled callout badges on each graph -->
+<script src="assets/chartjs-plugin-annotation.min.js"></script>
+
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- =========================================================
+     NAVBAR
+========================================================= -->
+<header class="navbar">
+  <div class="container nav-inner">
+    <a href="#home" class="logo">
+      <span class="logo-mark">📐</span>
+      Kinematics
+    </a>
+
+    <nav class="nav-links" id="navLinks">
+      <a href="#home" class="active">Home</a>
+      <a href="#notes">Notes</a>
+      <a href="#simulator">Simulator</a>
+      <a href="#graphs">Graphs</a>
+      <a href="#practice">Practice</a>
+      <a href="#quiz">Quiz</a>
+      <a href="#progress">Progress</a>
+    </nav>
+
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+<section class="hero" id="home">
+  <div class="container hero-inner">
+    <div class="hero-copy reveal">
+      <div class="hero-badge"><span class="dot"></span> Chapter 1 · Mechanics</div>
+      <h1 class="hero-title">Kinematics</h1>
+      <p class="hero-subtitle">Learn Physics by interacting instead of memorizing. Drag a slider, watch a car move, and see the formulas come alive.</p>
+      <div class="hero-cta-row">
+        <a href="#simulator" class="btn btn-primary">Start Learning →</a>
+        <a href="#notes" class="btn btn-ghost">Browse Notes</a>
+      </div>
+      <div class="hero-stats">
+        <div><strong>10</strong><span>Core Concepts</span></div>
+        <div><strong>15</strong><span>Practice Problems</span></div>
+        <div><strong>10</strong><span>Quiz Questions</span></div>
+      </div>
+    </div>
+
+    <div class="hero-art reveal">
+      <img src="assets/hero.svg" alt="Illustration of a car moving along a dashed trajectory above a road" />
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     TOPIC CARDS
+========================================================= -->
+<section id="topics">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-eyebrow">Overview</span>
+      <h2 class="section-title">Six ideas, one motion</h2>
+      <p class="section-subtitle">Every kinematics problem is built from these six building blocks.</p>
+    </div>
+
+    <div class="topics-grid">
+      <div class="glass-card topic-card reveal">
+        <div class="topic-icon">🏃</div>
+        <h3>Motion</h3>
+        <p>A change in an object's position with respect to time and a reference point.</p>
+      </div>
+      <div class="glass-card topic-card reveal">
+        <div class="topic-icon">📏</div>
+        <h3>Distance</h3>
+        <p>Total path length covered by an object — always positive, a scalar quantity.</p>
+      </div>
+      <div class="glass-card topic-card reveal">
+        <div class="topic-icon">📍</div>
+        <h3>Displacement</h3>
+        <p>Shortest straight-line change in position, with direction — a vector quantity.</p>
+      </div>
+      <div class="glass-card topic-card reveal">
+        <div class="topic-icon">⚡</div>
+        <h3>Speed</h3>
+        <p>Rate of change of distance travelled per unit time — how fast, no direction.</p>
+      </div>
+      <div class="glass-card topic-card reveal">
+        <div class="topic-icon">🧭</div>
+        <h3>Velocity</h3>
+        <p>Rate of change of displacement per unit time — speed with a direction attached.</p>
+      </div>
+      <div class="glass-card topic-card reveal">
+        <div class="topic-icon">🚀</div>
+        <h3>Acceleration</h3>
+        <p>Rate of change of velocity per unit time — how quickly velocity itself changes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     NOTES
+========================================================= -->
+<section id="notes">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-eyebrow">Study Notes</span>
+      <h2 class="section-title">Concepts, explained simply</h2>
+      <p class="section-subtitle">Every idea with a plain definition, a worked example, and a quick visual cue.</p>
+    </div>
+
+    <div class="notes-grid">
+
+      <div class="glass-card note-card reveal">
+        <div class="note-head"><div class="note-icon">🏃</div><h3>Motion</h3></div>
+        <p>An object is in motion if its position changes continuously with respect to a fixed reference point over time.</p>
+        <div class="note-example"><strong>Example:</strong> A bus leaving a bus stop is in motion relative to the stop.</div>
+      </div>
+
+      <div class="glass-card note-card reveal">
+        <div class="note-head"><div class="note-icon">🧍</div><h3>Rest</h3></div>
+        <p>An object is at rest if its position does not change with respect to a fixed reference point over time.</p>
+        <div class="note-example"><strong>Example:</strong> A parked car is at rest relative to the road.</div>
+      </div>
+
+      <div class="glass-card note-card reveal">
+        <div class="note-head"><div class="note-icon">📏</div><h3>Distance</h3></div>
+        <p>The total length of the actual path travelled by an object, regardless of direction. It is a scalar.</p>
+        <div class="note-example"><strong>Example:</strong> Walking 3 m north then 3 m south covers a distance of 6 m.</div>
+      </div>
+
+      <div class="glass-card note-card reveal">
+        <div class="note-head"><div class="note-icon">📍</div><h3>Displacement</h3></div>
+        <p>The shortest straight-line distance between the initial and final position, along with direction. It is a vector.</p>
+        <div class="note-example"><strong>Example:</strong> Walking 3 m north then 3 m south gives a displacement of 0 m.</div>
+      </div>
+
+      <div class="glass-card note-card reveal">
+        <div class="note-head"><div class="note-icon">⚖️</div><h3>Scalar vs Vector</h3></div>
+        <p>Scalars have only magnitude (distance, speed). Vectors have magnitude and direction (displacement, velocity).</p>
+        <div class="note-example"><strong>Example:</strong> "5 m/s" is a speed; "5 m/s east" is a velocity.</div>
+      </div>
+
+      <div class="glass-card note-card reveal">
+        <div class="note-head"><div class="note-icon">⚡</div><h3>Speed</h3></div>
+        <p>Distance travelled per unit time. Speed = Distance ÷ Time. It tells us how fast, but not which way.</p>
+        <div class="note-example"><strong>Example:</strong> Covering 100 m in 20 s gives a speed of 5 m/s.</div>
+      </div>
+
+      <div class="glass-card note-card reveal">
+        <div class="note-head"><div class="note-icon">🧭</div><h3>Velocity</h3></div>
+        <p>Displacement per unit time. Velocity = Displacement ÷ Time. It includes direction of motion.</p>
+        <div class="note-example"><strong>Example:</strong> 5 m/s towards the east is a velocity.</div>
+      </div>
+
+      <div class="glass-card note-card reveal">
+        <div class="note-head"><div class="note-icon">🚀</div><h3>Acceleration</h3></div>
+        <p>The rate at which velocity changes with time. Acceleration = (Final − Initial Velocity) ÷ Time.</p>
+        <div class="note-example"><strong>Example:</strong> Going from 0 to 20 m/s in 4 s gives 5 m/s².</div>
+      </div>
+
+      <div class="glass-card note-card reveal">
+        <div class="note-head"><div class="note-icon">➡️</div><h3>Uniform Motion</h3></div>
+        <p>An object covers equal displacements in equal intervals of time — velocity stays constant.</p>
+        <div class="note-example"><strong>Example:</strong> A train moving at a constant 60 km/h on a straight track.</div>
+      </div>
+
+      <div class="glass-card note-card reveal">
+        <div class="note-head"><div class="note-icon">📈</div><h3>Uniform Acceleration</h3></div>
+        <p>An object's velocity changes by equal amounts in equal intervals of time.</p>
+        <div class="note-example"><strong>Example:</strong> A ball in free fall gains about 9.8 m/s of speed every second.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     FORMULAS
+========================================================= -->
+<section id="formulas">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-eyebrow">Reference</span>
+      <h2 class="section-title">The five equations you need</h2>
+      <p class="section-subtitle">Everything in this chapter reduces to these formulas.</p>
+    </div>
+
+    <div class="formula-grid">
+      <div class="glass-card formula-card reveal">
+        <div class="formula-name">Equation of Motion</div>
+        <div class="formula-expr">v = u + at</div>
+        <p>Final velocity equals initial velocity plus the product of acceleration and time.</p>
+      </div>
+      <div class="glass-card formula-card reveal">
+        <div class="formula-name">Equation of Motion</div>
+        <div class="formula-expr">s = ut + ½at²</div>
+        <p>Displacement equals initial velocity times time, plus half of acceleration times time squared.</p>
+      </div>
+      <div class="glass-card formula-card reveal">
+        <div class="formula-name">Equation of Motion</div>
+        <div class="formula-expr">v² = u² + 2as</div>
+        <p>Final velocity squared equals initial velocity squared plus twice the product of acceleration and displacement.</p>
+      </div>
+      <div class="glass-card formula-card reveal">
+        <div class="formula-name">Average Velocity</div>
+        <div class="formula-expr">v̄ = (u + v) / 2</div>
+        <p>For uniform acceleration, average velocity is the mean of initial and final velocity.</p>
+      </div>
+      <div class="glass-card formula-card reveal">
+        <div class="formula-name">Average Speed</div>
+        <div class="formula-expr">Total Distance / Total Time</div>
+        <p>The overall rate of covering distance across the whole journey, ignoring direction.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     SIMULATOR + GRAPHS
+========================================================= -->
+<section id="simulator">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-eyebrow">Interactive</span>
+      <h2 class="section-title">Motion Simulator</h2>
+      <p class="section-subtitle">Move the sliders and watch the numbers and graphs react instantly — no scrolling needed.</p>
+    </div>
+
+    <div class="sim-layout">
+      <div class="glass-card sim-controls reveal">
+        <div class="slider-grid">
+          <div class="slider-group">
+            <div class="slider-label">
+              <span>Initial Velocity (u)</span>
+              <span class="value"><span id="uValue">5</span> <span class="unit">m/s</span></span>
+            </div>
+            <input type="range" id="uSlider" min="0" max="30" step="1" value="5" />
+          </div>
+
+          <div class="slider-group">
+            <div class="slider-label">
+              <span>Acceleration (a)</span>
+              <span class="value"><span id="aValue">2</span> <span class="unit">m/s²</span></span>
+            </div>
+            <input type="range" id="aSlider" min="-5" max="10" step="0.5" value="2" />
+          </div>
+
+          <div class="slider-group">
+            <div class="slider-label">
+              <span>Time (t)</span>
+              <span class="value"><span id="tValue">4</span> <span class="unit">s</span></span>
+            </div>
+            <input type="range" id="tSlider" min="0" max="10" step="0.5" value="4" />
+          </div>
+        </div>
+
+        <div class="sim-results">
+          <div class="sim-result">
+            <div class="label">Final Velocity</div>
+            <div class="val"><span id="finalVelocity">13</span> m/s</div>
+          </div>
+          <div class="sim-result">
+            <div class="label">Distance</div>
+            <div class="val"><span id="simDistance">36</span> m</div>
+          </div>
+          <div class="sim-result">
+            <div class="label">Avg. Velocity</div>
+            <div class="val"><span id="avgVelocity">9</span> m/s</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="graphs-grid" id="graphs">
+        <div class="glass-card graph-card reveal">
+          <h4>Position–Time</h4>
+          <div class="graph-canvas-wrap"><canvas id="positionChart"></canvas></div>
+        </div>
+        <div class="glass-card graph-card reveal">
+          <h4>Velocity–Time</h4>
+          <div class="graph-canvas-wrap"><canvas id="velocityChart"></canvas></div>
+        </div>
+        <div class="glass-card graph-card reveal">
+          <h4>Acceleration–Time</h4>
+          <div class="graph-canvas-wrap"><canvas id="accelerationChart"></canvas></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     SOLVER
+========================================================= -->
+<section id="solver">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-eyebrow">Practice Tool</span>
+      <h2 class="section-title">Step-by-step Example Solver</h2>
+      <p class="section-subtitle">Enter any three values and watch the correct formula get applied, one step at a time.</p>
+    </div>
+
+    <div class="solver-layout">
+      <div class="glass-card solver-form reveal">
+        <div class="form-field">
+          <label for="solveU">Initial Velocity, u (m/s)</label>
+          <input type="number" id="solveU" placeholder="e.g. 0" value="0" />
+        </div>
+        <div class="form-field">
+          <label for="solveA">Acceleration, a (m/s²)</label>
+          <input type="number" id="solveA" placeholder="e.g. 3" value="3" />
+        </div>
+        <div class="form-field">
+          <label for="solveT">Time, t (s)</label>
+          <input type="number" id="solveT" placeholder="e.g. 5" value="5" />
+        </div>
+        <button class="btn btn-primary" id="solveBtn" style="width:100%;">Solve →</button>
+      </div>
+
+      <div class="glass-card solver-output reveal" id="solverOutput">
+        <div class="solver-placeholder">Enter values on the left and click <strong>Solve</strong> to see the full working.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     PRACTICE
+========================================================= -->
+<section id="practice">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-eyebrow">Practice</span>
+      <h2 class="section-title">15 Practice Questions</h2>
+      <p class="section-subtitle">Try each one yourself before revealing the answer.</p>
+    </div>
+
+    <div class="practice-filters reveal">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="easy">Easy</button>
+      <button class="filter-btn" data-filter="medium">Medium</button>
+      <button class="filter-btn" data-filter="hard">Hard</button>
+    </div>
+
+    <div class="practice-grid" id="practiceGrid">
+      <!-- populated by script.js from questions.js -->
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     QUIZ
+========================================================= -->
+<section id="quiz">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-eyebrow">Test Yourself</span>
+      <h2 class="section-title">Kinematics Quiz</h2>
+      <p class="section-subtitle">10 questions. One try each. See your score at the end.</p>
+    </div>
+
+    <div class="glass-card quiz-card reveal">
+      <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="quizProgressFill"></div></div>
+      <div class="quiz-meta">
+        <span id="quizPosition">Question 1 of 10</span>
+        <span class="score">Score: <span id="quizScore">0</span></span>
+      </div>
+
+      <div id="quizBody">
+        <div class="quiz-question" id="quizQuestion"></div>
+        <div class="quiz-options" id="quizOptions"></div>
+      </div>
+
+      <div class="quiz-nav">
+        <button class="btn btn-ghost btn-sm" id="quizPrevBtn">← Previous</button>
+        <button class="btn btn-ghost btn-sm" id="quizRestartBtn" style="display:none;">Restart Quiz</button>
+        <button class="btn btn-primary btn-sm" id="quizNextBtn">Next →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     PROGRESS
+========================================================= -->
+<section id="progress">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-eyebrow">Dashboard</span>
+      <h2 class="section-title">Your Progress</h2>
+      <p class="section-subtitle">A snapshot of how far you've come in this chapter.</p>
+    </div>
+
+    <svg width="0" height="0" style="position:absolute;">
+      <defs>
+        <linearGradient id="ringGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#3B82F6" />
+          <stop offset="100%" stop-color="#22C55E" />
+        </linearGradient>
+      </defs>
+    </svg>
+
+    <div class="progress-grid">
+      <div class="glass-card progress-card reveal">
+        <div class="progress-ring-wrap">
+          <svg viewBox="0 0 120 120">
+            <circle class="progress-ring-bg" cx="60" cy="60" r="50"></circle>
+            <circle class="progress-ring-fill" id="ringTopics" cx="60" cy="60" r="50" stroke-dasharray="314" stroke-dashoffset="314"></circle>
+          </svg>
+          <div class="progress-ring-value" id="ringTopicsValue">0%</div>
+        </div>
+        <div class="label">Completed Topics</div>
+      </div>
+
+      <div class="glass-card progress-card reveal">
+        <div class="progress-ring-wrap">
+          <svg viewBox="0 0 120 120">
+            <circle class="progress-ring-bg" cx="60" cy="60" r="50"></circle>
+            <circle class="progress-ring-fill" id="ringQuiz" cx="60" cy="60" r="50" stroke-dasharray="314" stroke-dashoffset="314"></circle>
+          </svg>
+          <div class="progress-ring-value" id="ringQuizValue">0%</div>
+        </div>
+        <div class="label">Quiz Score</div>
+      </div>
+
+      <div class="glass-card progress-card reveal">
+        <div class="progress-ring-wrap">
+          <svg viewBox="0 0 120 120">
+            <circle class="progress-ring-bg" cx="60" cy="60" r="50"></circle>
+            <circle class="progress-ring-fill" id="ringAccuracy" cx="60" cy="60" r="50" stroke-dasharray="314" stroke-dashoffset="314"></circle>
+          </svg>
+          <div class="progress-ring-value" id="ringAccuracyValue">0%</div>
+        </div>
+        <div class="label">Practice Accuracy</div>
+      </div>
+
+      <div class="glass-card progress-card reveal">
+        <div class="progress-ring-wrap">
+          <svg viewBox="0 0 120 120">
+            <circle class="progress-ring-bg" cx="60" cy="60" r="50"></circle>
+            <circle class="progress-ring-fill" id="ringTime" cx="60" cy="60" r="50" stroke-dasharray="314" stroke-dashoffset="314"></circle>
+          </svg>
+          <div class="progress-ring-value" id="ringTimeValue">0m</div>
+        </div>
+        <div class="label">Study Time</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+<footer class="footer">
+
+</footer>
+
+<script src="questions.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
